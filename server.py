@@ -6,9 +6,14 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html")
 
+@app.route("/get", methods=['GET'])
+def get_get():
+	mq = sample_query()
+	print mq.get_dict()
+	return render_template("index.html",**mq.get_dict())
 
-@app.route("/get")
-def get():
+@app.route("/get", methods=['POST'])
+def get_post():
 	mq = sample_query()
 	return mq.get_json()
 

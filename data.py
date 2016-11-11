@@ -7,8 +7,11 @@ class CQuery:
 		self.text = text
 		self.opts = opts
 	
+	def get_dict(self):
+		return {"id":self.id, "title":self.title, "text":self.text, "opts": self.opts}
+	
 	def get_json(self):
-		return jsonify({"id":self.id, "title":self.title, "text":self.text, "opts": self.opts})
+		return jsonify(self.get_dict())
 
 
 def sample_query():

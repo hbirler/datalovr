@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<!-- Required meta tags always come first -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-    
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+	
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
   </head>
   <body>
-    <div class="container">
-	<div class="card">
-	  <img class="card-img-top" src="{{ url_for('static',filename='img/logo.png') }}" alt="Card image cap">
-	  <div class="card-block">
-	    <h4 class="card-title">Ist komish?</h4>
-	    <p class="card-text">Ayy lmaoo</p>
-	  </div>
-	  <ul class="list-group list-group-flush">
-	    <li class="list-group-item">A</li>
-	    <li class="list-group-item">B</li>
-	    <li class="list-group-item">E</li>
-	  </ul>
-	  <div class="card-block">
-	    <a href="#" class="btn btn-success">Ja</a>
-	    <a href="#" class="btn btn-danger">Nein</a>
-	  </div>
+	<div class="container">
+		<div class="card">
+		  <img class="card-img-top" src="{{ url_for('static',filename='img/logo.png') }}" alt="Card image cap">
+		  <div class="card-block">
+			<h4 class="card-title">{{title}}</h4>
+			<p class="card-text">{{text}}</p>
+		  </div>
+		  <ul class="list-group list-group-flush">
+			{% for item in opts %}
+			<li class="list-group-item">{{item}}</li>
+			{% endfor %}
+		  </ul>
+		  <div class="card-block">
+			<a href="#" class="btn btn-success">Ja</a>
+			<a href="#" class="btn btn-danger">Nein</a>
+		  </div>
+		</div>
 	</div>
-</div>
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+	<!-- jQuery first, then Tether, then Bootstrap JS. -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
   </body>
 </html>
