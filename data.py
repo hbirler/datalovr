@@ -12,8 +12,13 @@ class CQuery:
 		self.opts = opts
 	@staticmethod
 	def from_case(mid, case):
-		print case
-		return CQuery(mid,"Title",str(case),["a","b","c"])
+		a = ""
+		for i in pid.keys():
+			if pid[i] == case[-1][0]:
+				a = i
+
+		return CQuery(mid,"Case ID: " + str(case[0]), "Plant: " + a + " | Throughput time: "  + str(case[-1][3] / 24) + " days " 
+			+ str(case[-1][3] % 24) + " hours" + " | User Count: " + str(case[-1][4]), [die[x[0]] for x in case[1]])
 	
 	def get_dict(self):
 		return {"id":self.id, "title":self.title, "text":self.text, "opts": self.opts}
@@ -80,6 +85,7 @@ def load_data():
 
 #save_data()
 cs, eid, pid, cases, edges = load_data()
+die = {y:x for x,y in eid.iteritems()} #die die die
 #print cs
 
 #print len(cs)
