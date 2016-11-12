@@ -24,11 +24,11 @@ class CQuery:
 def read_data():
 	cases = None
 	kis = None
-	with open("cases.csv") as f:
+	with open("data/cases.csv") as f:
 		cases = [row for row in csv.reader(f.readlines(), delimiter=";")]
 	#with open("throughput.csv") as f:
 	#	through = [row for row in csv.reader(f.readlines(), delimiter=";")]
-	with open("kis.csv") as f:
+	with open("data/kis.csv") as f:
 		kis = [row for row in csv.reader(f.readlines(), delimiter=";")]
 	#print through
 	return cases[1:], kis[1:]
@@ -56,11 +56,11 @@ def process_data():
 def save_data():
 	cs, eid, pid = process_data()
 	data = (cs, eid, pid)
-	pickle.dump(data, open("data.p", "wb"))
+	pickle.dump(data, open("data/data.p", "wb"))
 	pass
 
 def load_data():
-	data = pickle.load(open("data.p", "rb"))
+	data = pickle.load(open("data/data.p", "rb"))
 	cs, eid, pid = data
 	#print cs
 	return cs, eid, pid
@@ -68,8 +68,8 @@ def load_data():
 #save_data()
 cs, eid, pid = load_data()
 
-lolol = CQuery.from_case("123",random.choice(cs))
-print eid
+#lolol = CQuery.from_case("123",random.choice(cs))
+#print eid
 
 def sample_query():
 	return CQuery.from_case("123",random.choice(cs))

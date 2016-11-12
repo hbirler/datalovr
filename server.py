@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from data import CQuery, sample_query
+import store
 app = Flask(__name__)
 
 @app.route("/")
@@ -18,8 +19,11 @@ def get_post():
 	mq = sample_query()
 	return mq.get_json()
 
-@app.route("/set/<int:id>", methods=['POST'])
-def set(id):
+@app.route("/set/<int:key>", methods=['POST'])
+def set(key):
+	content = request.get_json(silent=True)
+	value = content["resp"]
+	store.add(key, value)
 	return "success"
 
 if __name__ == "__main__":
