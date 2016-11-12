@@ -1,10 +1,10 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from data import CQuery, sample_query
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-	return get_get()
+	return render_template("index_ajax.html")
 	#return render_template("index.html")
 
 @app.route("/get", methods=['GET'])
@@ -18,7 +18,7 @@ def get_post():
 	mq = sample_query()
 	return mq.get_json()
 
-@app.route("/set/<int:id>")
+@app.route("/set/<int:id>", methods=['POST'])
 def set(id):
 	return "success"
 

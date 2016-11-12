@@ -2,6 +2,7 @@ from flask import jsonify
 import csv
 from itertools import groupby
 import cPickle as pickle
+import random
 
 class CQuery:
 	def __init__(self, mid = "", title = "", text = "", opts = []):
@@ -9,38 +10,16 @@ class CQuery:
 		self.title = title
 		self.text = text
 		self.opts = opts
+	@staticmethod
+	def from_case(mid, case):
+		print case
+		return CQuery(mid,"Title",str(case),["a","b","c"])
 	
 	def get_dict(self):
 		return {"id":self.id, "title":self.title, "text":self.text, "opts": self.opts}
 	
 	def get_json(self):
 		return jsonify(self.get_dict())
-
-class Env:
-	def __init__(self, events, edges, cases):
-		self.events = events
-		self.edges = edges
-		self.cases = cases
-		pass
-
-class Event:
-	def __init__(self, key, name):
-		self.key = key
-		self.name = name
-		pass
-
-class Edge:
-	def __init__(self, fr, to):
-		self.fr = fr
-		self.to = to
-		pass
-
-class Case:
-	def __init__(self, key, events, value):
-		self.key = key
-		self.events = events
-		self.value = value
-		pass
 
 def read_data():
 	cases = None
@@ -83,11 +62,55 @@ def save_data():
 def load_data():
 	data = pickle.load(open("data.p", "rb"))
 	cs, eid, pid = data
-	print cs
+	#print cs
 	return cs, eid, pid
 
 #save_data()
-load_data()
+cs, eid, pid = load_data()
+
+lolol = CQuery.from_case("123",random.choice(cs))
+print eid
 
 def sample_query():
-	return CQuery("123","Topkek","Ayy lmaoo",["Topkek","Tanzen","Oww yeah"])
+	return CQuery.from_case("123",random.choice(cs))
+	#return CQuery("123","Topkek","Ayy lmaoo",["Topkek","Tanzen","Oww yeah"])
+	
+	
+	
+
+
+
+
+
+
+
+
+
+"""
+
+class Env:
+	def __init__(self, events, edges, cases):
+		self.events = events
+		self.edges = edges
+		self.cases = cases
+		pass
+
+class Event:
+	def __init__(self, key, name):
+		self.key = key
+		self.name = name
+		pass
+
+class Edge:
+	def __init__(self, fr, to):
+		self.fr = fr
+		self.to = to
+		pass
+
+class Case:
+	def __init__(self, key, events, value):
+		self.key = key
+		self.events = events
+		self.value = value
+		pass
+"""
