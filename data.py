@@ -79,7 +79,7 @@ def load_data():
 	return cs, eid, pid, cases, edg
 
 #save_data()
-cs, eid, pid, cases, edg = load_data()
+cs, eid, pid, cases, edges = load_data()
 #print cs
 
 #print len(cs)
