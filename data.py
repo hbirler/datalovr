@@ -85,10 +85,11 @@ def load_data():
 
 #save_data()
 cs, eid, pid, cases, edges = load_data()
+ci = [c for c in cases.items()]
 die = {y:x for x,y in eid.iteritems()} #die die die
 #print cs
 
-#print len(cs)
+print len(cs)
 
 def sample_query():
 	mcs = random.choice(cs)

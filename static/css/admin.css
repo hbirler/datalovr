@@ -6,6 +6,7 @@
     background: #f6f6f6;
     display: block;
     margin: 0;
+    padding: 15px;
 }
 #cases {
 	word-wrap: break-word;
