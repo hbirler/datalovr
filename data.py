@@ -56,7 +56,7 @@ def get_edges(cases):
 		for i,e in enumerate(case[0]):
 			if i == 0:
 				continue
-			mk = tuple(sorted((case[0][i-1][0], case[0][i][0])))
+			mk = (case[0][i-1][0], case[0][i][0])
 			if mk not in edgd:
 				edgd[mk] = 0
 			edgd[mk] += 1
