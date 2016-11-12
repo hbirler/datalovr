@@ -42,7 +42,6 @@ def get(key):
 def add(key, value, store = True):
 	data[key] = value
 	if store:
-		#print json.dumps({"key":key, "action":"add", "value":value })
 		write_f(json.dumps({"key":key, "action":"add", "value":value }))
 
 def remove(key, store = True):

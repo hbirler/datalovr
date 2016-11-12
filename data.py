@@ -26,11 +26,10 @@ def read_data():
 	kis = None
 	with open("data/cases.csv") as f:
 		cases = [row for row in csv.reader(f.readlines(), delimiter=";")]
-	#with open("throughput.csv") as f:
-	#	through = [row for row in csv.reader(f.readlines(), delimiter=";")]
+	
 	with open("data/kis.csv") as f:
 		kis = [row for row in csv.reader(f.readlines(), delimiter=";")]
-	#print through
+	
 	return cases[1:], kis[1:]
 
 def process_data():
@@ -43,39 +42,53 @@ def process_data():
 	
 	eid = dict(reversed(x) for x in enumerate(es))
 	
-	
 	ckeys = list(set(e[0] for e in cases))
 	
 	ces = dict((key, [(s[1], s[2]) for s in sorted([g for g in group], key = lambda x: x[2])]  ) for key, group in groupby(((c[0], eid[c[1]], c[2]) for c in cases), lambda c: c[0]))
 	
 	cs = [(key, ces[key], ks[key]) for key in ckeys] 
 	
-	#print cs
 	return cs, eid, pid
+
+def get_edges(cases):
+	edgd = dict()
+	for k, case in cases.items():
+		for i,e in enumerate(case[0]):
+			if i == 0:
+				continue
+			mk = tuple(sorted((case[0][i-1][0], case[0][i][0])))
+			if mk not in edgd:
+				edgd[mk] = 0
+			edgd[mk] += 1
 	
+	edsort = [(x[0],x[1]) for x in sorted(edgd.items(), key = lambda x: x[1], reverse=True)]
+	return edsort
+
 def save_data():
 	cs, eid, pid = process_data()
-	data = (cs, eid, pid)
+	cases = dict((c[0], c[1:]) for c in cs)
+	edg = get_edges(cases)
+	data = (cs, eid, pid, cases, edg)
 	pickle.dump(data, open("data/data.p", "wb"))
 	pass
 
 def load_data():
 	data = pickle.load(open("data/data.p", "rb"))
-	cs, eid, pid = data
+	cs, eid, pid, cases, edg = data
 	#print cs
-	return cs, eid, pid
+	return cs, eid, pid, cases, edg
 
 #save_data()
-cs, eid, pid = load_data()
+cs, eid, pid, cases, edg = load_data()
+#print cs
 
-#lolol = CQuery.from_case("123",random.choice(cs))
-#print eid
+#print len(cs)
 
 def sample_query():
-	return CQuery.from_case("123",random.choice(cs))
-	#return CQuery("123","Topkek","Ayy lmaoo",["Topkek","Tanzen","Oww yeah"])
+	mcs = random.choice(cs)
+	return CQuery.from_case(mcs[0],mcs)
 	
-	
+
 	
 
 

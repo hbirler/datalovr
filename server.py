@@ -19,12 +19,21 @@ def get_post():
 	mq = sample_query()
 	return mq.get_json()
 
-@app.route("/set/<int:key>", methods=['POST'])
+@app.route("/set/<key>", methods=['POST'])
 def set(key):
 	content = request.get_json(silent=True)
 	value = content["resp"]
 	store.add(key, value)
 	return "success"
+
+
+@app.route("/admin", methods=['GET'])
+def admin():
+	return render_template("admin.html")
+
+@app.route("/admin", methods=['POST'])
+def admin_post():
+	return render_template("admin.html")
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", debug=True)
