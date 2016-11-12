@@ -10,7 +10,7 @@ def index():
 @app.route("/get", methods=['GET'])
 def get_get():
 	mq = sample_query()
-	print mq.get_dict()
+	#print mq.get_dict()
 	return render_template("index.html",**mq.get_dict())
 
 @app.route("/get", methods=['POST'])
