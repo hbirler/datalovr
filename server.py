@@ -43,8 +43,8 @@ def case(key):
 	return render_template("case.html", **dc)
 
 @app.route("/caseempty", methods=['GET'])
-def case_empty(key):
-	return render_template("case_empty.html")
+def case_empty():
+	return render_template("caseempty.html")
 
 
 @app.route("/admin", methods=['GET'])
