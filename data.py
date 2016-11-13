@@ -5,23 +5,26 @@ import cPickle as pickle
 import random
 
 class CQuery:
-	def __init__(self, mid = "", title = "", text = "", opts = []):
+	def __init__(self, mid = "", title = "", text = "", dat = {}, opts = []):
 		self.id = mid
 		self.title = title
 		self.text = text
 		self.opts = opts
+		self.dat = dat
 	@staticmethod
 	def from_case(mid, case):
 		a = ""
 		for i in pid.keys():
 			if pid[i] == case[-1][0]:
 				a = i
-
-		return CQuery(mid,"Case ID: " + str(case[0]), "Plant: " + a + " | Throughput time: "  + str(case[-1][3] / 24) + " days " 
-			+ str(case[-1][3] % 24) + " hours" + " | User Count: " + str(case[-1][4]), [die[x[0]] for x in case[1]])
+		
+		opts = [die[x[0]] for x in case[1]]
+		return CQuery(mid, case[0], "", {"plant":a,"time_day":case[-1][3] / 24, "time_hour":case[-1][3] % 24,"user_count":case[-1][4]}, opts)
+		#return CQuery(mid,"Case ID: " + str(case[0]), "Plant: " + a + " | Throughput time: "  + str(case[-1][3] / 24) + " days " 
+		#	+ str(case[-1][3] % 24) + " hours" + " | User Count: " + str(case[-1][4]), [die[x[0]] for x in case[1]])
 	
 	def get_dict(self):
-		return {"id":self.id, "title":self.title, "text":self.text, "opts": self.opts}
+		return {"id":self.id, "title":self.title, "text":self.text, "opts": self.opts, "dat":self.dat}
 	
 	def get_json(self):
 		return jsonify(self.get_dict())

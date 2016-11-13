@@ -22,13 +22,16 @@
   <body>
 	<div class=".container-fluid fill">
 	<div id="map" class="row" ng-app="myApp" ng-controller="myCtrl">
-	{% raw %}
-	<div id="edges" class="col-md-8">
+	
+	<div id="edges" class="col-md-8 p-2">
+	
+	
 	<div ng-bind-html="edgeview | to_trusted"></div>
 	</div>
+	
 	<div id="cases" class="col-md-4">
+<div class="p-2" style="width:100%"><img src="{{ url_for('static',filename='img/logo_gray_light.png') }}" class="mx-auto d-block" alt="logo"></div>
 
-  {% endraw %}
   <select class="form-control" id="selectRange">
   {% for number in range(251) %}
       <option value="{{number*500}}">{{number*500}}-{{(number+1)*500}}</option>

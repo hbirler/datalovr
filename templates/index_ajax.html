@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	
+	<script src="https://use.fontawesome.com/5441fd5392.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<!-- Bootstrap CSS -->
@@ -27,8 +29,10 @@
 		  <img class="card-img-top" src="{{ url_for('static',filename='img/logo.png') }}" alt="Card image cap">
 		  {% raw %}
 		  <div class="card-block">
-			<h4 class="card-title">{{card.title}}</h4>
-			<p class="card-text">{{card.text}}</p>
+			<h4 class="card-title">Case {{card.title}}</h4>
+			<p class="card-text"><p><i class="fa fa-building" aria-hidden="true"></i> {{card.dat.plant}}
+			<i class="fa fa-clock-o pl-1" aria-hidden="true"></i> {{card.dat.time_day}}d {{card.dat.time_hour}}h
+			<i class="fa fa-users pl-1" aria-hidden="true"></i> {{card.dat.user_count}}h</p>
 		  </div>
 		  <ul class="list-group list-group-flush">
 			<li ng-repeat="item in card.opts track by $index" class="list-group-item">{{item}}</li>
