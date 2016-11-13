@@ -107,7 +107,7 @@ def calculate_cases(checkcases):
 	kk = db.keys()
 	N = len(kk)
 	
-	if N - last_N > 1 or last_wc is None:
+	if N - last_N >= 1 or last_wc is None:
 		calculate_wc()
 	
 	rez = array([(key, check_w(last_wc, transform_case(case))) for key, case in checkcases])
@@ -118,7 +118,7 @@ def calculate_edges(case):
 	kk = db.keys()
 	N = len(kk)
 	
-	if N - last_N > 1 or last_we is None:
+	if N - last_N >= 1 or last_we is None:
 		calculate_we()
 	
 	mx = [v[1] for v in transform_edges(case, 0)]

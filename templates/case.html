@@ -1,5 +1,27 @@
 
-<h2>Case {{key}}</h2>
+<h2 class="row">
+
+<div class="col-md-2">
+Case
+</div>
+
+<div class="col-md-8 casekey">{{key}} <i onclick="sclick()" class="fa fa-search" aria-hidden="true"></i></div>
+
+
+<div class="col-md-8 caseinput">
+	<div class="input-group">
+      <input id="casekeysearch" type="text" class="form-control" placeholder="Open case...">
+      <span class="input-group-btn">
+        <button onclick="ssearch()" class="btn btn-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <button onclick="scancel()" class="btn btn-secondary" type="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+      </span>
+    </div>
+	
+	
+</div> 
+
+
+ </h2>
 
 <p class="lead">
   Relevance: {{value}}%

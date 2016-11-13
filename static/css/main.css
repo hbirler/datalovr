@@ -1,0 +1,13 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 3em;
+  padding-left:2em;
+  /* Set the fixed height of the footer here */
+}
+
+.janein {
+	padding-left: 1em;
+	font-size: 2em;
+}

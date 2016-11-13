@@ -31,3 +31,25 @@ html, body {
 .grau {
 	color: #a8a8a8;
 }
+
+.ref {
+    font-size: 2.3em;
+    color: #cacaca !important;
+}
+
+.ref:hover {
+    color: #afafaf !important;
+    cursor: pointer; cursor: hand;
+}
+
+.casekey i {
+    color: #cacaca !important;
+}
+.casekey i:hover {
+    color: #afafaf !important;
+    cursor: pointer; cursor: hand;
+}
+
+.caseinput {
+    display: none;
+}
